@@ -7,6 +7,8 @@ import Header from "../components/Header";
 import { Providers } from "../store/Provider";
 import DesktopMenu from "@/components/DesktopMenu";
 import { Restaurant } from "@/hooks/useFetchRestaurant";
+import { useDeviceType } from "@/hooks/useDeviceType";
+import MobileMenu from "@/components/MobileMenu";
 
 interface RestaurantContextProps {
   restaurant: Restaurant | null;
@@ -36,6 +38,7 @@ export default function RootLayout({
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const isMobile = useDeviceType();
 
   useEffect(() => {
     fetchRestaurantData()
@@ -61,7 +64,7 @@ export default function RootLayout({
         <Providers>
           <RestaurantContext.Provider value={{ restaurant, loading, error }}>
             <div className="header-container">
-              <DesktopMenu />
+              {isMobile ? <MobileMenu /> : <DesktopMenu />}
               <Header />
             </div>
             <main>{children}</main>

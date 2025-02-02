@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const { webSettings } = restaurant;
 
   return (
-    <header style={{ backgroundColor: webSettings.navBackgroundColour }}>
+    <header>
       {/* Considerar usar o componente <Image /> do Next.js para otimização */}
       <img src={webSettings.bannerImage} alt="logo" width="100%" />
     </header>
