@@ -1,27 +1,143 @@
-/* styles/globals.css */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* src/styles/globals.css */
 body {
   margin: 0;
-  font-family: sans-serif;
-  background-color: #f8f8f8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 main {
-  padding: 1rem;
+  margin: 0;
+  background-color: #eeeeee;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  background: #4f372f;
+  width: 100%;
+  font-size: large;
+}
+
+header img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.desktop-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  background: #4f372f;
+  height: 52px;
+  width: 100%;
+  font-size: large;
+}
+
+.desktop-basket {
+  background: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+}
+
+.desktop-basket-header {
+  width: Fill (320px) px;
+  height: Fixed (64px) px;
+  padding: 16px 24px 16px 24px;
+  border-radius: 5px 5px 0px 0px;
+  opacity: 0px;
+  color: #464646;
+}
+
+.desktop-bt-msg {
+  padding: 16px 24px 16px 24px;
+  opacity: 0px;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  color: #464646;
+}
+
+/* onhover mudar de cor o fundo */
+.menu-item:hover {
+  background: #e9ecef;
+}
+
+.item-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.item-description {
+  font-size: 16px;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  color: #464646;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+/* Em telas grandes (a partir de 992px), limita a 1 linha */
+@media (min-width: 992px) {
+  .item-description {
+    -webkit-line-clamp: 1;
+  }
+  .wrap-content {
+    padding: 32px 40px 32px 40px;
+    opacity: 0px;
+    background: #f8f9fa;
+    margin: 0 !important;
+  }
+  .main-content {
+    padding: 32px 40px 32px 40px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 2px;
+    background: #ffffff;
+  }
+  main {
+    margin: 0;
+    background-color: #eeeeee;
+  }
+}
+
+/* Em telas pequenas (menos de 992px), limita a 2 linhas */
+@media (max-width: 991px) {
+  .item-description {
+    -webkit-line-clamp: 2;
+  }
+  .wrap-content {
+  }
+  .main-content {
+    background: #ffffff;
+  }
+  main {
+    margin: 0;
+    background-color: white;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 150px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #0070f3;
 }

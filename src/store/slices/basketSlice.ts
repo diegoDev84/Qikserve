@@ -1,4 +1,4 @@
-// store/slices/basketSlice.ts
+// src/store/slices/basketSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface BasketItem {
@@ -21,6 +21,7 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<BasketItem>) => {
+      if (action.payload.quantity <= 0) return; // Evita adicionar quantidade negativa ou zero
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
       );

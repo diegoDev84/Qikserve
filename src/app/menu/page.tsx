@@ -1,29 +1,16 @@
-// app/menu/page.tsx
-"use client";
+// src/app/menu/page.tsx
 import React from "react";
-import { useFetchMenu } from "../../hooks/useFetchMenu";
-import MenuItemComponent from "../../components/MenuItem";
+import SearchBar from "../../components/SearchBar";
+import CategoryFilter from "../../components/CategoryFilter";
+import MenuList from "../../components/MenuList";
 
-const MenuPage: React.FC = () => {
-  const { menu, loading, error } = useFetchMenu();
-
-  if (loading) return <div>Loading menu...</div>;
-  if (error) return <div>Error loading menu: {error}</div>;
-  if (!menu) return <div>No menu available.</div>;
-
+export default function MenuPage() {
   return (
     <div>
-      <h2>{menu.name}</h2>
-      {menu.sections.map((section) => (
-        <div key={section.id}>
-          <h3>{section.name}</h3>
-          {section.items.map((item) => (
-            <MenuItemComponent key={item.id} {...item} />
-          ))}
-        </div>
-      ))}
+      <h2>Menu</h2>
+      <SearchBar />
+      <CategoryFilter />
+      <MenuList />
     </div>
   );
-};
-
-export default MenuPage;
+}

@@ -1,42 +1,43 @@
-// components/MenuItem.tsx
-"use client";
+// src/components/MenuItem.tsx
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../store/slices/basketSlice";
 
 interface MenuItemProps {
-  id: number;
-  name: string;
-  description?: string;
-  price: number;
-  available: boolean;
+  item: {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    images: {
+      id: number;
+      image: string;
+    }[];
+  };
+  onClick: (item: MenuItemProps["item"]) => void;
 }
 
-const MenuItemComponent: React.FC<MenuItemProps> = ({
-  id,
-  name,
-  description,
-  price,
-  available,
-}) => {
-  const dispatch = useDispatch();
+export default function MenuItem({ item, onClick }: MenuItemProps) {
+  console.log(item);
 
-  const handleAddToBasket = () => {
-    dispatch(addItem({ id, name, quantity: 1, price }));
-  };
+  const img = item.images && item.images.length > 0 ? item.images[0].image : "";
 
   return (
     <div
-      style={{ border: "1px solid #ccc", margin: "0.5rem", padding: "0.5rem" }}
+      className="row d-flex align-items-center flex-nowrap menu-item"
+      title="Clique para ver detalhes"
+      onClick={() => onClick(item)}
+      style={{ marginTop: "2rem", cursor: "pointer" }}
     >
-      <h3>{name}</h3>
-      {description && <p>{description}</p>}
-      <p>Price: R$ {price.toFixed(2)}</p>
-      <button onClick={handleAddToBasket} disabled={!available}>
-        {available ? "Add to Basket" : "Unavailable"}
-      </button>
+      <div className="col" style={{ minWidth: 0 }}>
+        <div className="item-title">{item.name}</div>
+        <div className="text-muted item-description">{item.description}</div>
+        <div className="item-price">R${item.price.toFixed(2)}</div>
+      </div>
+
+      {img && (
+        <div className="col-auto">
+          <img src={img} alt={item.name} width="128" height="85" />
+        </div>
+      )}
     </div>
   );
-};
-
-export default MenuItemComponent;
+}

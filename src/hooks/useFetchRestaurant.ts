@@ -1,4 +1,4 @@
-// hooks/useFetchRestaurant.ts
+// src/hooks/useFetchRestaurant.ts
 import { useEffect, useState } from "react";
 
 export interface Restaurant {
@@ -14,7 +14,6 @@ export interface Restaurant {
   };
   ccy: string;
   ccySymbol: string;
-  // Adicione outros campos conforme necessário
 }
 
 export function useFetchRestaurant() {
@@ -23,7 +22,7 @@ export function useFetchRestaurant() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://cdn-dev.preoday.com/challenge/venue/9", { mode: "no-cors" })
+    fetch("/api/restaurant")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -33,6 +32,7 @@ export function useFetchRestaurant() {
         setLoading(false);
       })
       .catch((err) => {
+        console.error("Error fetching restaurant:", err);
         setError(err.message);
         setLoading(false);
       });

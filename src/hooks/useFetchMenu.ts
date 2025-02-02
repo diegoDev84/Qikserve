@@ -1,4 +1,6 @@
-// hooks/useFetchMenu.ts
+// src/hooks/useFetchMenu.ts
+"use client";
+
 import { useEffect, useState } from "react";
 
 export interface MenuItem {
@@ -7,7 +9,10 @@ export interface MenuItem {
   description?: string;
   price: number;
   available: boolean;
-  // Adicione outros campos conforme necessário
+  images: {
+    id: number;
+    image: string;
+  }[];
 }
 
 export interface MenuSection {
@@ -28,7 +33,7 @@ export function useFetchMenu() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://cdn-dev.preoday.com/challenge/menu", { mode: "no-cors" })
+    fetch("/api/menu")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -38,6 +43,7 @@ export function useFetchMenu() {
         setLoading(false);
       })
       .catch((err) => {
+        console.error("Error fetching menu:", err);
         setError(err.message);
         setLoading(false);
       });

@@ -1,43 +1,22 @@
-// components/Basket.tsx
-"use client";
+// src/components/Basket.tsx
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { removeItem, clearBasket } from "../store/slices/basketSlice";
 
-const Basket: React.FC = () => {
-  const basket = useSelector((state: RootState) => state.basket.items);
-  const dispatch = useDispatch();
+export default function Basket() {
+  const basketItems = useSelector((state: RootState) => state.basket.items);
 
-  const handleRemove = (id: number) => {
-    dispatch(removeItem(id));
-  };
-
-  if (basket.length === 0) {
-    return <div>Your basket is empty.</div>;
-  }
-
-  const total = basket.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  if (basketItems.length === 0) return <p>Seu carrinho está vazio.</p>;
 
   return (
     <div>
-      <h2>Your Basket</h2>
-      <ul>
-        {basket.map((item) => (
-          <li key={item.id}>
-            {item.name} - Qty: {item.quantity} - Price: R${" "}
-            {(item.price * item.quantity).toFixed(2)}
-            <button onClick={() => handleRemove(item.id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
-      <h3>Total: R$ {total.toFixed(2)}</h3>
-      <button onClick={() => dispatch(clearBasket())}>Clear Basket</button>
+      {basketItems.map((item) => (
+        <div key={item.id}>
+          <p>
+            {item.name} - {item.quantity}
+          </p>
+        </div>
+      ))}
     </div>
   );
-};
-
-export default Basket;
+}

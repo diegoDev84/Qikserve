@@ -1,3 +1,7 @@
+=========================================
+File: README.md
+=========================================
+
 # Qikserve Restaurant Menu Challenge
 
 > This project was developed as part of the **Front End Developer** interview process at Qikserve.  
@@ -68,11 +72,10 @@ This project demonstrates best practices in **React**, **TypeScript**, **ES6+**,
 
 1. **Clone the repository**:
 
-   ```bash
-   - git clone https://github.com/your-username/qikserve-restaurant-challenge.git
-   - cd qikserve-restaurant-challenge
+bash
 
-   ```
+- git clone https://github.com/your-username/qikserve-restaurant-challenge.git
+- cd qikserve-restaurant-challenge
 
 2. **Install dependencies**:
 
