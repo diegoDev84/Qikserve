@@ -35,7 +35,8 @@ header img {
   background: #4f372f;
   height: 52px;
   width: 100%;
-  font-size: large;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .desktop-basket {
@@ -127,17 +128,21 @@ header img {
   }
 }
 
-.nav {
-  display: flex;
-  gap: 150px;
-}
-
 .navLink {
   text-decoration: none;
   color: #fff;
   transition: color 0.2s;
 }
 
+.navLink.active {
+  border-bottom: 4px solid #fff; /* Cor da borda do item ativo */
+}
+
 .navLink:hover {
-  color: #0070f3;
+  color: #909090;
+}
+
+.contact-info-box {
+  padding: 25px 20px;
+  text-align: center;
 }

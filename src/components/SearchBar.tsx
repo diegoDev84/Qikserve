@@ -4,14 +4,18 @@ import React, { useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 
-export default function SearchBar() {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps) {
   const [query, setQuery] = useState("");
 
-  // const handleSearch = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   // Lógica de busca
-  //   alert(Buscando por: ${query});
-  // };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    onSearch(value); // Atualiza o estado no HomePage
+  };
 
   return (
     <InputGroup className="mb-3 mt-3">
@@ -25,7 +29,7 @@ export default function SearchBar() {
         placeholder="Search menu items"
         value={query}
         style={{ borderLeft: "none" }}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleChange}
       />
     </InputGroup>
   );

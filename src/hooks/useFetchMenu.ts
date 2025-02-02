@@ -19,6 +19,7 @@ export interface MenuSection {
   id: number;
   name: string;
   items: MenuItem[];
+  images: { id: number; image: string }[];
 }
 
 export interface Menu {
