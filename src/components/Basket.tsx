@@ -9,11 +9,11 @@ export default function Basket() {
   if (basketItems.length === 0) return <p>Seu carrinho está vazio.</p>;
 
   return (
-    <div>
+    <div className="p-4">
       {basketItems.map((item) => (
         <div key={item.id}>
           <p>
-            {item.name} - {item.quantity}
+            {item.quantity} - {item.name}
           </p>
         </div>
       ))}

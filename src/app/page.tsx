@@ -1,7 +1,7 @@
 // app/page.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { useFetchMenu } from "../hooks/useFetchMenu";
+import { IMenuItem, useFetchMenu } from "../hooks/useFetchMenu";
 import MenuItemComponent from "../components/MenuItem";
 import SearchBar from "@/components/SearchBar";
 import { OverlayTrigger, Spinner } from "react-bootstrap";
@@ -9,6 +9,8 @@ import { normalizedText } from "@/functions/normalizedText";
 import SectionFilter from "@/components/SectionFilter";
 import { GrDown, GrUp } from "react-icons/gr";
 import { useDeviceType } from "@/hooks/useDeviceType";
+import ItemDetailsModal from "@/components/ItemDetailsModal";
+import Basket from "@/components/Basket";
 
 const HomePage: React.FC = () => {
   const { menu, loading, error } = useFetchMenu();
@@ -25,6 +27,14 @@ const HomePage: React.FC = () => {
       setOpenedSections(menu.sections.map((section) => section.name));
     }
   }, [menu]);
+
+  const [openItemDeatils, setOpenItemDetails] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<IMenuItem | null>(null);
+
+  const handleOpenItemDetails = (item: IMenuItem) => {
+    setSelectedItem(item);
+    setOpenItemDetails(true);
+  };
 
   if (loading)
     return (
@@ -117,12 +127,8 @@ const HomePage: React.FC = () => {
                       !openedSections.includes(section.name) ? null : (
                         <MenuItemComponent
                           key={item.id.toString()}
-                          item={{
-                            ...item,
-                            id: item.id.toString(),
-                            description: item.description ?? "",
-                          }}
-                          onClick={() => {}}
+                          item={item}
+                          onClick={() => handleOpenItemDetails(item)}
                         />
                       )
                     )}
@@ -137,6 +143,8 @@ const HomePage: React.FC = () => {
               <div className="desktop-basket-header">
                 <h2>Carrinho</h2>
               </div>
+              <Basket />
+
               <div className="desktop-bt-msg">Seu carrinho está vazio</div>
             </div>
           </div>
@@ -182,7 +190,6 @@ const HomePage: React.FC = () => {
                     textDecoration: "underline",
                     color: "#4F372F",
                     fontWeight: "700",
-                    fontSize: "16px",
                   }}
                 >
                   View allergy information
@@ -192,6 +199,11 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       )}
+      <ItemDetailsModal
+        item={selectedItem}
+        isOpen={openItemDeatils}
+        onClose={() => setOpenItemDetails(false)}
+      />
     </div>
   );
 };

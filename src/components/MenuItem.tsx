@@ -1,22 +1,18 @@
 // src/components/MenuItem.tsx
+import { useRestaurantContext } from "@/app/layout";
+import { IMenuItem } from "@/hooks/useFetchMenu";
 import React from "react";
 
 interface MenuItemProps {
-  item: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    images: {
-      id: number;
-      image: string;
-    }[];
-  };
+  item: IMenuItem;
   onClick: (item: MenuItemProps["item"]) => void;
 }
 
 export default function MenuItem({ item, onClick }: MenuItemProps) {
   console.log(item);
+
+  const { restaurant } = useRestaurantContext();
+  if (!restaurant) return <div>No data</div>;
 
   const img = item.images && item.images.length > 0 ? item.images[0].image : "";
 
@@ -30,7 +26,12 @@ export default function MenuItem({ item, onClick }: MenuItemProps) {
       <div className="col" style={{ minWidth: 0 }}>
         <div className="item-title">{item.name}</div>
         <div className="text-muted item-description">{item.description}</div>
-        <div className="item-price">R${item.price.toFixed(2)}</div>
+        <div className="item-price">
+          {item.price.toLocaleString(restaurant.locale, {
+            style: "currency",
+            currency: restaurant.ccy,
+          })}
+        </div>
       </div>
 
       {img && (

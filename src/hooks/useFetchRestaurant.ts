@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 export interface Restaurant {
   id: number;
   name: string;
+  internalName: string;
+  description: string | null;
   address1: string;
   city: string;
   webSettings: {
@@ -14,6 +16,7 @@ export interface Restaurant {
   };
   ccy: string;
   ccySymbol: string;
+  locale: string;
 }
 
 export function useFetchRestaurant() {

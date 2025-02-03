@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-export interface MenuItem {
+export interface IMenuItem {
   id: number;
   name: string;
   description?: string;
@@ -13,12 +13,27 @@ export interface MenuItem {
     id: number;
     image: string;
   }[];
+  modifiers?: {
+    id: number;
+    items: {
+      available: boolean;
+      id: number;
+      maxChoices: number;
+      name: string;
+      position: number;
+      price: number;
+      visible: boolean;
+    }[];
+    maxChoices: number;
+    minChoices: number;
+    name: string;
+  }[];
 }
 
 export interface MenuSection {
   id: number;
   name: string;
-  items: MenuItem[];
+  items: IMenuItem[];
   images: { id: number; image: string }[];
 }
 

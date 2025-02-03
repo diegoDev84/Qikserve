@@ -3,28 +3,12 @@
 
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
-import { useFetchMenu } from "../hooks/useFetchMenu";
+import { IMenuItem, useFetchMenu } from "../hooks/useFetchMenu";
 import ItemDetailsModal from "./ItemDetailsModal";
-
-interface MenuItemProps {
-  item: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    images: {
-      id: number;
-      image: string;
-    }[];
-  };
-  onClick: (item: MenuItemProps["item"]) => void;
-}
 
 export default function MenuList() {
   const { menu, loading, error } = useFetchMenu();
-  const [selectedItem, setSelectedItem] = useState<
-    MenuItemProps["item"] | null
-  >(null);
+  const [selectedItem, setSelectedItem] = useState<IMenuItem | null>(null);
 
   if (loading) return <p>Carregando menu...</p>;
   if (error) return <p>Erro ao carregar o menu.</p>;
@@ -38,14 +22,8 @@ export default function MenuList() {
           {section.items.map((item) => (
             <MenuItem
               key={item.id.toString()}
-              item={{
-                id: String(item.id),
-                name: item.name || "",
-                description: item.description || "",
-                price: item.price || 0,
-                images: item.images || [],
-              }}
-              onClick={setSelectedItem}
+              item={item}
+              onClick={(item: IMenuItem) => setSelectedItem(item)}
             />
           ))}
         </div>
