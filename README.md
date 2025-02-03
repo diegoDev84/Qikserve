@@ -153,6 +153,7 @@ bash
 - **Assumption**: Fake or hard-coded data for the menu if no real API is provided.
 
 Decidi criar páginas de login e contato apenas ilustrativas e para os link terem rota.
+Assumi que o botão de checkout da versão mobile foi esquecido na versão desktop
 
 ---
 

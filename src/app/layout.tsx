@@ -63,7 +63,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <RestaurantContext.Provider value={{ restaurant, loading, error }}>
-            <div className="header-container">
+            <div className="header-container" style={{ overflowX: "hidden" }}>
               {isMobile ? <MobileMenu /> : <DesktopMenu />}
               <Header />
             </div>

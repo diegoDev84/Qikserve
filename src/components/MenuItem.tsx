@@ -9,8 +9,6 @@ interface MenuItemProps {
 }
 
 export default function MenuItem({ item, onClick }: MenuItemProps) {
-  console.log(item);
-
   const { restaurant } = useRestaurantContext();
   if (!restaurant) return <div>No data</div>;
 

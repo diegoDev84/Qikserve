@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface BasketItem {
   id: number;
   name: string;
+  detail: string;
   quantity: number;
   price: number;
 }
@@ -23,10 +24,11 @@ export const basketSlice = createSlice({
     addItem: (state, action: PayloadAction<BasketItem>) => {
       if (action.payload.quantity <= 0) return; // Evita adicionar quantidade negativa ou zero
       const existingItem = state.items.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id?.toString() === action.payload.id?.toString()
       );
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
+        existingItem.price += action.payload.price;
       } else {
         state.items.push(action.payload);
       }

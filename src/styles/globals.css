@@ -1,4 +1,18 @@
 /* src/styles/globals.css */
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYREGULAR.OTF") format("OTF"),
+    url("/fonts/SFPRODISPLAYREGULAR.OTF") format("OTF");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sf-display {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+}
+
 body {
   margin: 0;
   color: #121212;
@@ -10,7 +24,7 @@ body {
 main {
   margin: 0;
   background-color: #eeeeee;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 header {
@@ -67,6 +81,18 @@ header img {
   color: #464646;
 }
 
+.desktop-basket-footer {
+  width: Fill (320px) px;
+  height: Fixed (64px) px;
+  padding: 16px 24px 16px 24px;
+  border-radius: 0px 0px 5px 5px;
+  opacity: 0px;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+  color: #464646;
+}
+
 .desktop-bt-msg {
   padding: 16px 24px 16px 24px;
   opacity: 0px;
@@ -80,12 +106,24 @@ header img {
   background: #e9ecef;
 }
 
+.fw-300 {
+  font-weight: 300;
+}
+
 .fw-400 {
   font-weight: 400;
 }
 
+.fw-500 {
+  font-weight: 500;
+}
+
 .fw-600 {
   font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
 }
 
 .form-check-input {
@@ -96,6 +134,16 @@ header img {
 .item-title {
   font-weight: 600;
   color: #121212;
+}
+
+.btn-item-basket {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 1.4rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: white !important;
 }
 
 .item-description {
