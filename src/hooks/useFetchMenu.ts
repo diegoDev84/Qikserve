@@ -59,17 +59,9 @@ export function useFetchMenu() {
   const [menu, setMenu] = useState<Menu | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const isDev =
-    typeof window !== "undefined" &&
-    (window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1");
-
-  const apiUrl = isDev
-    ? "/api/menu"
-    : "https://cdn-dev.preoday.com/challenge/menu";
 
   useEffect(() => {
-    fetch(apiUrl)
+    fetch("/api/menu")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -83,7 +75,7 @@ export function useFetchMenu() {
         setError(err.message);
         setLoading(false);
       });
-  }, [apiUrl]);
+  }, []);
 
   return { menu, loading, error };
 }
