@@ -1,7 +1,3 @@
-A seguir, o README.md completo atualizado, com destaque especial aos pontos atendidos conforme solicitado:
-
----
-
 # Qikserve Restaurant Challenge
 
 > Este projeto foi desenvolvido como parte do processo seletivo para **Front End Developer** na Qikserve.  
@@ -273,6 +269,3 @@ yarn test
 
 Obrigado por conferir este desafio! Caso tenha dúvidas ou sugestões, fique à vontade para entrar em contato.
 
----
-
-> _Este README foi atualizado para refletir as recentes alterações e melhorias na estrutura e funcionalidades do projeto, destacando os requisitos atendidos conforme as diretrizes propostas._
