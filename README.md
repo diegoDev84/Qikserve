@@ -74,7 +74,7 @@ Este projeto foi desenvolvido com foco em atender aos seguintes pontos:
 
 ## Demo ao Vivo
 
-https://diegodev84.github.io/Qikserve
+https://qikserve-hbe8w0w97-diegos-projects-1f97d9b5.vercel.app/
 
 ---
 
