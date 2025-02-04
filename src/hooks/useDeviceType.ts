@@ -8,17 +8,20 @@ import { useEffect, useState } from "react";
  * inner width is less than 991 pixels. It returns a boolean indicating if the device
  * is considered mobile.
  *
- * @returns {boolean} Returns true if the window width is less than 991 pixels, false otherwise.
+ * @returns {boolean | null} Returns true if the window width is less than 991 pixels,
+ * false if it's not, or null if the device type has not been determined yet.
  *
  * @example
  * const isMobile = useDeviceType();
- * if (isMobile) {
+ * if (isMobile === null) {
+ *   // ainda não determinou: renderize um fallback ou nada
+ * } else if (isMobile) {
  *   // Execute mobile-specific logic here
  * }
  */
-
 export function useDeviceType() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  // Inicialmente, definimos como null para indicar que ainda não sabemos.
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const checkScreenSize = () => {

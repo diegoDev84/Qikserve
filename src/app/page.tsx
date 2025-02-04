@@ -36,8 +36,12 @@ import { useMenuContext } from "@/context/MenuProvider";
  */
 
 const HomePage: React.FC = () => {
-  const { menu, loading, error } = useMenuContext();
-  const { restaurant } = useRestaurantContext();
+  const { menu, loading: menuLoading, error: menuError } = useMenuContext();
+  const {
+    restaurant,
+    loading: restaurantLoading,
+    error: restaurantError,
+  } = useRestaurantContext();
   const isMobile = useDeviceType();
   const basketItems = useSelector((state: RootState) => state.basket.items);
   const [openBasket, setOpenBasket] = useState<boolean>(false);
@@ -46,9 +50,6 @@ const HomePage: React.FC = () => {
   const [openedSections, setOpenedSections] = useState<string[]>(
     menu?.sections?.map((section) => section.name) ?? []
   );
-
-  console.log(menu);
-  console.log(restaurant);
 
   useEffect(() => {
     if (menu) {
@@ -64,30 +65,35 @@ const HomePage: React.FC = () => {
     setOpenItemDetails(true);
   };
 
-  if (!restaurant) return <div>No restaurant data available.</div>;
-
-  const { webSettings } = restaurant;
-
-  if (loading)
+  if (restaurantLoading || menuLoading) {
     return (
       <div
         className="text-center d-flex justify-content-center align-items-center"
-        style={{
-          height: "calc(100vh - 56px)",
-        }}
+        style={{ height: "calc(100vh - 56px)" }}
       >
-        <div>
-          <Spinner
-            animation="border"
-            role="status"
-            style={{ width: "3rem", height: "3rem" }}
-          ></Spinner>
-          <div>Aguarde, estamos carregando os melhores pratos para você!</div>
-        </div>
+        <Spinner
+          animation="border"
+          role="status"
+          style={{ width: "3rem", height: "3rem" }}
+        />
+        <div>Loading data...</div>
       </div>
     );
-  if (error) return <div>Failed to load menu: {error}</div>;
+  }
+
+  if (restaurantError)
+    return <div>Error loading restaurant data: {restaurantError}</div>;
+  if (menuError) return <div>Error loading menu: {menuError}</div>;
+  if (!restaurant) return <div>No restaurant data available.</div>;
   if (!menu) return <div>No menu data available.</div>;
+  if (isMobile === null) {
+    return <div>Carregando...</div>;
+  }
+
+  const { webSettings } = restaurant;
+
+  console.log(menu);
+  console.log(restaurant);
 
   return isMobile && openItemDetails ? (
     <ItemDetailsModal
