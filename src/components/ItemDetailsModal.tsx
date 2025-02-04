@@ -1,5 +1,4 @@
 // src/components/ItemDetailsModal.tsx
-import { useRestaurantContext } from "@/app/layout";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { IMenuItem } from "@/hooks/useFetchMenu";
 import React, { useEffect, useState } from "react";
@@ -11,6 +10,7 @@ import Button from "./Button";
 import ButtonCircle from "./ButtonCircle";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
+import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 
 interface ModalProps {
   isOpen: boolean;
@@ -65,7 +65,7 @@ export default function ItemDetailsModal({
     }
   }, [item]);
 
-  const { restaurant } = useRestaurantContext();
+  const { restaurant } = useFetchRestaurant();
   if (!restaurant) return <div>No data</div>;
 
   const { webSettings } = restaurant;

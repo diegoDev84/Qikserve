@@ -1,6 +1,6 @@
 // app/layout.tsx
 "use client";
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../components/Header";
@@ -21,8 +21,6 @@ const RestaurantContext = createContext<RestaurantContextProps>({
   loading: true,
   error: null,
 });
-
-export const useRestaurantContext = () => useContext(RestaurantContext);
 
 async function fetchRestaurantData(): Promise<Restaurant> {
   const res = await fetch("/api/restaurant");

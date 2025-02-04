@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { InputGroup } from "react-bootstrap";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { useRestaurantContext } from "../layout";
 import Button from "@/components/Button";
+import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 
 /**
  * Renders the LoginPage component which provides a login interface.
@@ -19,7 +19,7 @@ import Button from "@/components/Button";
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [invalidLogin, setInvalidLogin] = useState<boolean>(false);
-  const { restaurant } = useRestaurantContext();
+  const { restaurant } = useFetchRestaurant();
 
   if (!restaurant) return <div>No data</div>;
 

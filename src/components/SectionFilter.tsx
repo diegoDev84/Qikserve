@@ -1,5 +1,5 @@
-import { useRestaurantContext } from "@/app/layout";
 import { MenuSection } from "@/hooks/useFetchMenu";
+import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 import React, { useState } from "react";
 
 interface SectionFilterProps {
@@ -44,7 +44,7 @@ export default function SectionFilter({
     onSectionSelect(newSection);
   };
 
-  const { restaurant } = useRestaurantContext();
+  const { restaurant } = useFetchRestaurant();
 
   if (!restaurant) return <header>No data</header>;
 

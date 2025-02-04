@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRestaurantContext } from "@/app/layout";
+import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 
 /**
  * Renders the DesktopMenu component.
@@ -20,7 +20,8 @@ import { useRestaurantContext } from "@/app/layout";
  */
 
 export default function DesktopMenu() {
-  const { restaurant, loading, error } = useRestaurantContext();
+  const { restaurant, loading, error } = useFetchRestaurant();
+
   const pathname = usePathname();
 
   if (loading) return <header>Loading...</header>;

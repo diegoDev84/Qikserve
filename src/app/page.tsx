@@ -11,10 +11,10 @@ import { GrDown, GrUp } from "react-icons/gr";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import ItemDetailsModal from "@/components/ItemDetailsModal";
 import Basket from "@/components/Basket";
-import { useRestaurantContext } from "@/app/layout";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import Button from "@/components/Button";
+import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 
 /**
  * HomePage component that displays the restaurant menu and basket.
@@ -36,7 +36,7 @@ import Button from "@/components/Button";
 
 const HomePage: React.FC = () => {
   const { menu, loading, error } = useFetchMenu();
-  const { restaurant } = useRestaurantContext();
+  const { restaurant } = useFetchRestaurant();
   const isMobile = useDeviceType();
   const basketItems = useSelector((state: RootState) => state.basket.items);
   const [openBasket, setOpenBasket] = useState<boolean>(false);
