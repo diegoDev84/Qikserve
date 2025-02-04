@@ -83,7 +83,7 @@ export function useFetchMenu() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [apiUrl]);
 
   return { menu, loading, error };
 }

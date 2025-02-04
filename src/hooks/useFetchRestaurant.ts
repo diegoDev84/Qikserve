@@ -61,7 +61,7 @@ export function useFetchRestaurant() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [apiUrl]);
 
   return { restaurant, loading, error };
 }
