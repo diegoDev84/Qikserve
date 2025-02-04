@@ -92,8 +92,6 @@ const HomePage: React.FC = () => {
 
   const { webSettings } = restaurant;
 
-  console.log(isMobile);
-
   return isMobile && openItemDetails ? (
     <ItemDetailsModal
       item={selectedItem}
@@ -131,7 +129,6 @@ const HomePage: React.FC = () => {
 
                 // Se não houver itens filtrados, não renderiza a seção
                 if (filteredItems.length === 0) {
-                  console.log("No items found for section", section.name);
                   return null;
                 }
 
