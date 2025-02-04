@@ -43,6 +43,19 @@ header img {
   width: auto;
 }
 
+.badge-quantity {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
 .desktop-menu {
   display: flex;
   justify-content: center;

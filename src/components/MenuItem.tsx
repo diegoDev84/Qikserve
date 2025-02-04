@@ -1,7 +1,9 @@
 // src/components/MenuItem.tsx
 import { useRestaurantContext } from "@/app/layout";
 import { IMenuItem } from "@/hooks/useFetchMenu";
+import { RootState } from "@/store";
 import React from "react";
+import { useSelector } from "react-redux";
 
 interface MenuItemProps {
   item: IMenuItem;
@@ -10,7 +12,11 @@ interface MenuItemProps {
 
 export default function MenuItem({ item, onClick }: MenuItemProps) {
   const { restaurant } = useRestaurantContext();
+  const basketItems = useSelector((state: RootState) => state.basket.items);
+
   if (!restaurant) return <div>No data</div>;
+
+  const { webSettings } = restaurant;
 
   const img = item.images && item.images.length > 0 ? item.images[0].image : "";
 
@@ -22,7 +28,26 @@ export default function MenuItem({ item, onClick }: MenuItemProps) {
       style={{ marginTop: "2rem", cursor: "pointer" }}
     >
       <div className="col" style={{ minWidth: 0 }}>
-        <div className="item-title">{item.name}</div>
+        <div className="d-flex align-items-center">
+          {basketItems.length > 1 &&
+            basketItems.some(
+              (i) => i.name.toString() === item.name.toString()
+            ) && (
+              <div
+                className="badge-quantity"
+                style={{ backgroundColor: webSettings.navBackgroundColour }}
+              >
+                {/* procurar pelo nome na basket */}
+                {
+                  basketItems.find(
+                    (i) => i.name.toString() === item.name.toString()
+                  )?.quantity
+                }{" "}
+              </div>
+            )}
+
+          <div className="item-title">{item.name}</div>
+        </div>
         <div className="text-muted item-description">{item.description}</div>
         <div className="item-price">
           {item.price.toLocaleString(restaurant.locale, {

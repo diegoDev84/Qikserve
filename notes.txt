@@ -3,4 +3,4 @@ Talvez uma div centralizada funcione
 
 precisa ainda exibir qts itens tem de cada na cesta (no menu)
 
-view basket em mobiles
+botão "menos" na basket (remove item)
