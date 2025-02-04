@@ -1,11 +1,29 @@
 // src/components/CheckoutButton.tsx
+import { useRestaurantContext } from "@/app/layout";
 import React from "react";
 
 export default function CheckoutButton() {
-  const handleCheckout = () => {
-    // Lógica de checkout (redirecionar, integrar com API, etc.)
-    alert("Iniciando o checkout...");
-  };
+  const { restaurant } = useRestaurantContext();
+  if (!restaurant) return <div>No data</div>;
 
-  return <button onClick={handleCheckout}>Finalizar Compra</button>;
+  const { webSettings } = restaurant;
+
+  return (
+    <button
+      className="btn mt-2"
+      style={{
+        backgroundColor: webSettings.navBackgroundColour,
+        color: "#fff",
+        width: "100%",
+        height: "48px",
+        fontSize: "18px",
+        fontWeight: "500",
+        border: "none",
+        borderRadius: "40px",
+      }}
+      onClick={() => window.alert("Checkout")}
+    >
+      Checkout now
+    </button>
+  );
 }

@@ -18,12 +18,12 @@ import { RootState } from "@/store";
 const HomePage: React.FC = () => {
   const { menu, loading, error } = useFetchMenu();
   const { restaurant } = useRestaurantContext();
-  const basketItems = useSelector((state: RootState) => state.basket.items);
-
   const isMobile = useDeviceType();
+  const basketItems = useSelector((state: RootState) => state.basket.items);
+  const [openBasket, setOpenBasket] = useState<boolean>(false);
+  const [filterQuery, setFilterQuery] = useState<string>("");
+  const [filterSection, setFilterSection] = useState<string>("");
 
-  const [filterQuery, setFilterQuery] = useState("");
-  const [filterSection, setFilterSection] = useState("");
   const [openedSections, setOpenedSections] = useState<string[]>(
     menu?.sections.map((section) => section.name) ?? []
   );
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
     }
   }, [menu]);
 
-  const [openItemDetails, setOpenItemDetails] = useState(false);
+  const [openItemDetails, setOpenItemDetails] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IMenuItem | null>(null);
 
   const handleOpenItemDetails = (item: IMenuItem) => {
@@ -72,23 +72,13 @@ const HomePage: React.FC = () => {
   if (error) return <div>Error loading menu: {error}</div>;
   if (!menu) return <div>No menu available.</div>;
 
-  const calculaTotal = () => {
-    let total = 0;
-    basketItems.forEach((item) => {
-      total += item.price;
-    });
-    return total;
-  };
-
-  console.log(isMobile && !openItemDetails);
-
   return isMobile && openItemDetails ? (
     <ItemDetailsModal
       item={selectedItem}
       isOpen={openItemDetails}
       onClose={() => setOpenItemDetails(false)}
     />
-  ) : (
+  ) : !openBasket ? (
     <div className="container">
       <div className="row">
         <SearchBar onSearch={setFilterQuery} />
@@ -165,61 +155,7 @@ const HomePage: React.FC = () => {
         </div>
         {!isMobile && (
           <div className="col-lg-4 col-sm-12">
-            <div className="desktop-basket">
-              <div className="desktop-basket-header">
-                <h2>Carrinho</h2>
-              </div>
-
-              <div className="desktop-bt-msg">
-                <Basket />
-              </div>
-              {basketItems.length > 0 && (
-                <>
-                  <div
-                    className="desktop-basket-footer fw-400 d-flex justify-content-between"
-                    style={{ fontSize: "16px" }}
-                  >
-                    <div>Sub total</div>
-                    <div className="fw-500">
-                      {calculaTotal().toLocaleString(restaurant.locale, {
-                        style: "currency",
-                        currency: restaurant.ccy,
-                      })}
-                    </div>
-                  </div>
-                  <div
-                    className="desktop-basket-footer d-flex justify-content-between align-items-center"
-                    style={{ fontSize: "24px", borderBottom: "none" }}
-                  >
-                    <div className="fw-300">Total:</div>
-                    <div className="fw-500 sf-display">
-                      {calculaTotal().toLocaleString(restaurant.locale, {
-                        style: "currency",
-                        currency: restaurant.ccy,
-                      })}
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-center px-4 pb-3">
-                    <button
-                      className="btn mt-2"
-                      style={{
-                        backgroundColor: webSettings.navBackgroundColour,
-                        color: "#fff",
-                        width: "100%",
-                        height: "48px",
-                        fontSize: "18px",
-                        fontWeight: "500",
-                        border: "none",
-                        borderRadius: "40px",
-                      }}
-                      onClick={() => window.alert("Checkout")}
-                    >
-                      Checkout now
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
+            <Basket />
           </div>
         )}
       </div>
@@ -270,21 +206,29 @@ const HomePage: React.FC = () => {
               </OverlayTrigger>
             </div>
           </div>
-          {/* <button
-            className="btn mt-2"
-            style={{
-              backgroundColor: webSettings.navBackgroundColour,
-              color: "#fff",
-              width: "100%",
-              height: "48px",
-              fontSize: "18px",
-              fontWeight: "500",
-              border: "none",
-              borderRadius: "40px",
-            }}
-            onClick={() => viewBasket()}
-          >
-            View Basket */}
+          {basketItems.length > 0 && (
+            <div className="mt-4 border-top" style={{ margin: "-33px" }}>
+              <div className="px-4 pb-4">
+                <button
+                  className="btn mt-2 fw-500"
+                  style={{
+                    backgroundColor: webSettings.navBackgroundColour,
+                    color: "#fff",
+                    width: "100%",
+                    height: "48px",
+                    fontSize: "18px",
+                    border: "none",
+                    borderRadius: "40px",
+                    letterSpacing: "0.75px",
+                  }}
+                  onClick={() => setOpenBasket(true)}
+                >
+                  Your Basket • {basketItems.length} item
+                  {basketItems.length > 1 && "s"}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
       <ItemDetailsModal
@@ -292,6 +236,19 @@ const HomePage: React.FC = () => {
         isOpen={openItemDetails}
         onClose={() => setOpenItemDetails(false)}
       />
+    </div>
+  ) : (
+    <div
+      style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: 9999,
+        height: "100vh",
+      }}
+    >
+      <Basket onClose={() => setOpenBasket(false)} />
     </div>
   );
 };

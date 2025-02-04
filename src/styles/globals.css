@@ -72,6 +72,12 @@ header img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 }
 
+.mobile-basket {
+  background: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  height: 100vh;
+}
+
 .desktop-basket-header {
   width: Fill (320px) px;
   height: Fixed (64px) px;
@@ -79,6 +85,20 @@ header img {
   border-radius: 5px 5px 0px 0px;
   opacity: 0px;
   color: #464646;
+}
+
+.mobile-basket-header {
+  background-color: white;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.75px;
+  width: Fill (320px) px;
+  height: Fixed (64px) px;
+  padding: 16px 24px 16px 24px;
+  border-radius: 5px 5px 0px 0px;
+  opacity: 0px;
+  color: #121212;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .desktop-basket-footer {
