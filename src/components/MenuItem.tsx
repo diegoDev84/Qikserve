@@ -35,7 +35,7 @@ export default function MenuItem({ item, onClick }: MenuItemProps) {
             ) && (
               <div
                 className="badge-quantity"
-                style={{ backgroundColor: webSettings.navBackgroundColour }}
+                style={{ backgroundColor: webSettings.primaryColour }}
               >
                 {/* procurar pelo nome na basket */}
                 {

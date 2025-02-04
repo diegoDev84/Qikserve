@@ -66,25 +66,38 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
   };
 
   return (
-    <div className={`${isMobile ? "mobile" : "desktop"}-basket`}>
+    <div
+      className={`${isMobile ? "mobile" : "desktop"}-basket`}
+      style={{ backgroundColor: isMobile ? webSettings.backgroundColour : "" }}
+    >
       <div className={`${isMobile ? "mobile" : "desktop"}-basket-header`}>
         <h2>Carrinho</h2>
         <div
           className="position-absolute"
-          style={{ right: "16px", top: "18px" }}
+          style={{
+            right: "16px",
+            top: "18px",
+            display: isMobile ? "block" : "none",
+          }}
           onClick={onClose}
         >
-          <CgClose size={16} color="#4F372F" />
+          <CgClose size={16} color={webSettings.primaryColour} />
         </div>
       </div>
       <div>
         {basketItems.length === 0 ? (
-          <div className="desktop-bt-msg">
+          <div
+            className="desktop-bt-msg"
+            style={{ backgroundColor: webSettings.backgroundColour }}
+          >
             <p>Seu carrinho está vazio.</p>
           </div>
         ) : (
           <div>
-            <div className="desktop-bt-msg">
+            <div
+              className="desktop-bt-msg"
+              style={{ backgroundColor: webSettings.backgroundColour }}
+            >
               {basketItems.map((item) => (
                 <div key={item.id} className="mb-3">
                   <div className="d-flex justify-content-between">
@@ -112,7 +125,7 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                     <button
                       className="btn rounded-circle btn-item-basket fs-2"
                       style={{
-                        backgroundColor: webSettings.navBackgroundColour,
+                        backgroundColor: webSettings.primaryColour,
                         padding: "0px",
                         paddingBottom: "5px",
                       }}
@@ -124,7 +137,7 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                     <button
                       className="btn rounded-circle btn-item-basket"
                       style={{
-                        backgroundColor: webSettings.navBackgroundColour,
+                        backgroundColor: webSettings.primaryColour,
                         padding: "0px",
                       }}
                       onClick={() => addItemToBasket(item.id)}

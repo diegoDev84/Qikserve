@@ -23,7 +23,6 @@ body {
 
 main {
   margin: 0;
-  background-color: #eeeeee;
   font-family: Roboto, sans-serif;
 }
 
@@ -61,7 +60,6 @@ header img {
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
-  background: #4f372f;
   height: 52px;
   width: 100%;
   font-size: 20px;
@@ -73,7 +71,6 @@ header img {
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
-  background: #4f372f;
   height: 42px;
   width: 100%;
   font-size: 14px;
@@ -81,12 +78,10 @@ header img {
 }
 
 .desktop-basket {
-  background: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 }
 
 .mobile-basket {
-  background: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
   height: 100vh;
 }
@@ -101,7 +96,6 @@ header img {
 }
 
 .mobile-basket-header {
-  background-color: white;
   text-align: center;
   font-size: 18px;
   letter-spacing: 0.75px;
@@ -129,7 +123,6 @@ header img {
 .desktop-bt-msg {
   padding: 16px 24px 16px 24px;
   opacity: 0px;
-  background: #ffffff;
   font-weight: 400;
   color: #464646;
 }
@@ -213,7 +206,6 @@ header img {
     padding: 32px 40px 32px 40px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
     border-radius: 2px;
-    background: #ffffff;
   }
   main {
     margin: 0;
@@ -227,9 +219,6 @@ header img {
     -webkit-line-clamp: 2;
   }
   .wrap-content {
-  }
-  .main-content {
-    background: #ffffff;
   }
   main {
     margin: 0;

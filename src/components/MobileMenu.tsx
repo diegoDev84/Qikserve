@@ -17,7 +17,10 @@ export default function MobileMenu() {
 
   return (
     <div>
-      <div className="desktop-menu text-white flex justify-content-between align-items-center">
+      <div
+        className="desktop-menu text-white flex justify-content-between align-items-center"
+        style={{ backgroundColor: restaurant.webSettings.navBackgroundColour }}
+      >
         {/* Nome da Rota Atual */}
         <div className="mx-auto">
           {/* primeira letra maiuscula */}
@@ -37,7 +40,12 @@ export default function MobileMenu() {
 
       {/* Menu Dropdown */}
       {menuOpen && (
-        <div className="mobile-menu row d-flex justify-content-center mx-auto">
+        <div
+          className="mobile-menu row d-flex justify-content-center mx-auto"
+          style={{
+            backgroundColor: restaurant.webSettings.navBackgroundColour,
+          }}
+        >
           <div
             className={`col-4 d-flex justify-content-center py-2 navLink ${
               pathname === "/" ? "active" : ""

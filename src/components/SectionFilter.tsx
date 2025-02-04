@@ -24,7 +24,7 @@ export default function SectionFilter({
   if (!restaurant) return <header>No data</header>;
 
   const { webSettings } = restaurant;
-  const borderColor = webSettings.navBackgroundColour ?? "#121212";
+  const borderColor = webSettings.primaryColour ?? "#121212";
 
   return (
     <div

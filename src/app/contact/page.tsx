@@ -14,10 +14,7 @@ export default function ContactPage() {
 
   return (
     <div className="container p-5 bg-light">
-      <div
-        className="text-center"
-        style={{ color: webSettings.navBackgroundColour }}
-      >
+      <div className="text-center" style={{ color: webSettings.primaryColour }}>
         <div className="text-center fw-bold fs-3">Fale conosco</div>
         <div className="text-center fw-light fs-6 mb-2">
           Entre em contato conosco para obter mais informações.
@@ -26,13 +23,13 @@ export default function ContactPage() {
       <div className="row justify-content-center gap-3 mt-3">
         <div className="col-lg-4 col-md-6 bg-white border rounded">
           <div className="contact-info-box d-flex align-items-center h-100">
-            <BiMailSend size={100} color={webSettings.navBackgroundColour} />
+            <BiMailSend size={100} color={webSettings.primaryColour} />
             <div className="text-start ms-3">
               <h3>Email</h3>
               <p>
                 <a
                   href="mailto:diegofpetry@gmail.com"
-                  style={{ color: webSettings.navBackgroundColour }}
+                  style={{ color: webSettings.primaryColour }}
                 >
                   diegofpetry@gmail.com
                 </a>
@@ -42,14 +39,14 @@ export default function ContactPage() {
         </div>
         <div className="col-lg-4 col-md-6 bg-white border rounded">
           <div className="contact-info-box d-flex align-items-center h-100">
-            <BsWhatsapp size={100} color={webSettings.navBackgroundColour} />
+            <BsWhatsapp size={100} color={webSettings.primaryColour} />
             <div className="text-start ms-3">
               <h3>WhatsApp</h3>
               <p>
                 <a
                   href="https://wa.me/5551982188221?text=Olá, gostaria de saber mais sobre o seu trabalho."
                   target="_blank"
-                  style={{ color: webSettings.navBackgroundColour }}
+                  style={{ color: webSettings.primaryColour }}
                 >
                   51 98218-8221
                 </a>

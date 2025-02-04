@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { InputGroup } from "react-bootstrap";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { useRestaurantContext } from "../layout";
+import Button from "@/components/Button";
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -16,10 +17,7 @@ export default function LoginPage() {
 
   return (
     <div className="container p-5 bg-light">
-      <div
-        className="text-center"
-        style={{ color: webSettings.navBackgroundColour }}
-      >
+      <div className="text-center" style={{ color: webSettings.primaryColour }}>
         <div className="text-center fw-bold fs-3">Bem vindo</div>
         <div className="text-center fw-light fs-6 mb-2">
           Preencha para continuar
@@ -77,19 +75,15 @@ export default function LoginPage() {
       </div>
       <div className="row justify-content-center">
         <div className="col-lg-4 col-md-6 col-12 mt-3">
-          <button
-            color="warning"
-            className="btn text-white w-100"
-            style={{
-              height: "50px",
-              backgroundColor: webSettings.navBackgroundColour,
-            }}
+          <Button
+            primaryColor={webSettings.primaryColour}
+            hoverColor={webSettings.primaryColourHover}
             onClick={() => setInvalidLogin(true)}
           >
             <div className="d-flex align-items-center justify-content-center">
               <div className="me-3">Entrar</div>
             </div>
-          </button>{" "}
+          </Button>{" "}
           {invalidLogin && (
             <div className="text-danger small">Email ou senha inválidos</div>
           )}

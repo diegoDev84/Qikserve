@@ -3,6 +3,7 @@ import { useRestaurantContext } from "@/app/layout";
 import { clearBasket } from "@/store/slices/basketSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
+import Button from "./Button";
 
 export default function CheckoutButton() {
   const { restaurant } = useRestaurantContext();
@@ -17,21 +18,12 @@ export default function CheckoutButton() {
   };
 
   return (
-    <button
-      className="btn mt-2"
-      style={{
-        backgroundColor: webSettings.navBackgroundColour,
-        color: "#fff",
-        width: "100%",
-        height: "48px",
-        fontSize: "18px",
-        fontWeight: "500",
-        border: "none",
-        borderRadius: "40px",
-      }}
+    <Button
+      primaryColor={webSettings.primaryColour}
+      hoverColor={webSettings.primaryColourHover}
       onClick={() => onCheckOut()}
     >
       Checkout now
-    </button>
+    </Button>
   );
 }

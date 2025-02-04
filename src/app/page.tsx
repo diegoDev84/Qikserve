@@ -1,7 +1,7 @@
 // app/page.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { IMenuItem, useFetchMenu } from "../hooks/useFetchMenu";
+import { IMenuItem, useFetchMenu } from "@/hooks/useFetchMenu";
 import MenuItemComponent from "../components/MenuItem";
 import SearchBar from "@/components/SearchBar";
 import { OverlayTrigger, Spinner } from "react-bootstrap";
@@ -11,9 +11,28 @@ import { GrDown, GrUp } from "react-icons/gr";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import ItemDetailsModal from "@/components/ItemDetailsModal";
 import Basket from "@/components/Basket";
-import { useRestaurantContext } from "./layout";
+import { useRestaurantContext } from "@/app/layout";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import Button from "@/components/Button";
+
+/**
+ * HomePage component that displays the restaurant menu and basket.
+ *
+ * This component performs the following operations:
+ * - Fetches the menu data using a custom hook and retrieves restaurant context.
+ * - Displays a loading spinner when data is being fetched.
+ * - Shows error messages if fetching the menu fails.
+ * - Renders a searchable and filterable menu with sections and items.
+ * - Manages the state for opened sections, selected menu item, and modal visibility.
+ * - Offers different layouts based on the device type:
+ *   - For mobile devices, it displays an item details modal.
+ *   - For larger devices, it renders the basket component alongside the menu.
+ * - Provides a toggle mechanism to collapse or expand each menu section.
+ * - Handles displaying basket items and uses a modal to show item details.
+ *
+ * @returns {JSX.Element} The rendered HomePage component.
+ */
 
 const HomePage: React.FC = () => {
   const { menu, loading, error } = useFetchMenu();
@@ -23,9 +42,8 @@ const HomePage: React.FC = () => {
   const [openBasket, setOpenBasket] = useState<boolean>(false);
   const [filterQuery, setFilterQuery] = useState<string>("");
   const [filterSection, setFilterSection] = useState<string>("");
-
   const [openedSections, setOpenedSections] = useState<string[]>(
-    menu?.sections.map((section) => section.name) ?? []
+    menu?.sections?.map((section) => section.name) ?? []
   );
 
   useEffect(() => {
@@ -42,19 +60,18 @@ const HomePage: React.FC = () => {
     setOpenItemDetails(true);
   };
 
-  if (!restaurant) return <div>No data</div>;
+  if (!restaurant) return <div>No restaurant data available.</div>;
 
   const { webSettings } = restaurant;
+
+  console.log(webSettings);
 
   if (loading)
     return (
       <div
-        className="text-center"
+        className="text-center d-flex justify-content-center align-items-center"
         style={{
           height: "calc(100vh - 56px)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <div>
@@ -62,15 +79,13 @@ const HomePage: React.FC = () => {
             animation="border"
             role="status"
             style={{ width: "3rem", height: "3rem" }}
-          >
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          ></Spinner>
           <div>Aguarde, estamos carregando os melhores pratos para você!</div>
         </div>
       </div>
     );
-  if (error) return <div>Error loading menu: {error}</div>;
-  if (!menu) return <div>No menu available.</div>;
+  if (error) return <div>Failed to load menu: {error}</div>;
+  if (!menu) return <div>No menu data available.</div>;
 
   return isMobile && openItemDetails ? (
     <ItemDetailsModal
@@ -85,7 +100,10 @@ const HomePage: React.FC = () => {
       </div>
       <div className="row wrap-content">
         <div className="col-lg-8 col-sm-12">
-          <div className="main-content">
+          <div
+            className="main-content"
+            style={{ backgroundColor: webSettings.backgroundColour }}
+          >
             <SectionFilter
               onSectionSelect={setFilterSection}
               sections={menu.sections}
@@ -93,7 +111,7 @@ const HomePage: React.FC = () => {
             {menu.sections
               .filter(
                 (section) =>
-                  // Se nenhuma seção estiver selecionada, mostra todas
+                  // If no section is selected, show all
                   !filterSection || section.name === filterSection
               )
               .map((section) => {
@@ -160,7 +178,6 @@ const HomePage: React.FC = () => {
         )}
       </div>
       {isMobile && (
-        // card view alergy information
         <div
           style={{
             background: "#F8F9FA",
@@ -179,7 +196,7 @@ const HomePage: React.FC = () => {
                 overlay={
                   <div
                     style={{
-                      background: "rgba(43, 35, 35, 0.85)",
+                      background: webSettings.primaryColour,
                       padding: "10px",
                       color: "white",
                       borderRadius: 3,
@@ -197,7 +214,7 @@ const HomePage: React.FC = () => {
                   className="card-title text-center"
                   style={{
                     textDecoration: "underline",
-                    color: "#4F372F",
+                    color: webSettings.primaryColour,
                     fontWeight: "700",
                   }}
                 >
@@ -208,24 +225,15 @@ const HomePage: React.FC = () => {
           </div>
           {basketItems.length > 0 && (
             <div className="mt-4 border-top" style={{ margin: "-33px" }}>
-              <div className="px-4 pb-4">
-                <button
-                  className="btn mt-2 fw-500"
-                  style={{
-                    backgroundColor: webSettings.navBackgroundColour,
-                    color: "#fff",
-                    width: "100%",
-                    height: "48px",
-                    fontSize: "18px",
-                    border: "none",
-                    borderRadius: "40px",
-                    letterSpacing: "0.75px",
-                  }}
+              <div className="px-4 pb-4 mt-2">
+                <Button
+                  primaryColor={webSettings.primaryColour}
+                  hoverColor={webSettings.primaryColourHover}
                   onClick={() => setOpenBasket(true)}
                 >
                   Your Basket • {basketItems.length} item
                   {basketItems.length > 1 && "s"}
-                </button>
+                </Button>
               </div>
             </div>
           )}

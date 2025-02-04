@@ -12,6 +12,7 @@ export interface Restaurant {
     bannerImage: string;
     backgroundColour: string;
     primaryColour: string;
+    primaryColourHover: string;
     navBackgroundColour: string;
   };
   ccy: string;

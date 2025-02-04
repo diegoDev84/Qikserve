@@ -13,8 +13,13 @@ export default function DesktopMenu() {
   if (error) return <header>Error: {error}</header>;
   if (!restaurant) return <header>No data</header>;
 
+  const { webSettings } = restaurant;
+
   return (
-    <div className="desktop-menu">
+    <div
+      className="desktop-menu"
+      style={{ backgroundColor: webSettings.navBackgroundColour }}
+    >
       <div className="row w-100 d-flex justify-content-center">
         <div
           className={`col-1 d-flex justify-content-center py-2 navLink ${

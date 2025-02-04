@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 import { CgClose } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/store/slices/basketSlice";
+import Button from "./Button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -133,7 +134,7 @@ export default function ItemDetailsModal({
         }}
         onClick={onClose}
       >
-        <CgClose size={16} color="#4F372F" />
+        <CgClose size={16} color={webSettings.primaryColour} />
       </div>
 
       {/* Seção fixa superior: Imagem e descrição */}
@@ -210,11 +211,11 @@ export default function ItemDetailsModal({
                                 cursor: "pointer",
                                 backgroundColor:
                                   modifierSelected === modItem.id
-                                    ? webSettings.navBackgroundColour
+                                    ? webSettings.primaryColour
                                     : "#fff",
                                 borderColor:
                                   modifierSelected === modItem.id
-                                    ? webSettings.navBackgroundColour
+                                    ? webSettings.primaryColour
                                     : "",
                               }}
                             />
@@ -277,7 +278,7 @@ export default function ItemDetailsModal({
           <button
             className="btn rounded-circle text-white"
             style={{
-              backgroundColor: webSettings.navBackgroundColour,
+              backgroundColor: webSettings.primaryColour,
               width: "32px",
               height: "32px",
               fontSize: "2rem",
@@ -292,26 +293,19 @@ export default function ItemDetailsModal({
           </button>
         </div>
 
-        {/* Botão “Add to Order” */}
-        <button
-          className="btn mt-2"
-          style={{
-            backgroundColor: webSettings.navBackgroundColour,
-            color: "#fff",
-            height: "48px",
-            fontSize: "18px",
-            fontWeight: "500",
-            border: "none",
-            borderRadius: "40px",
-          }}
-          onClick={handleAddToOrder}
-        >
-          Add to Order •{" "}
-          {totalOrder().toLocaleString(restaurant.locale, {
-            style: "currency",
-            currency: restaurant.ccy,
-          })}
-        </button>
+        <div className="mt-2">
+          <Button
+            primaryColor={webSettings.primaryColour}
+            hoverColor={webSettings.primaryColourHover}
+            onClick={handleAddToOrder}
+          >
+            Add to Order •{" "}
+            {totalOrder().toLocaleString(restaurant.locale, {
+              style: "currency",
+              currency: restaurant.ccy,
+            })}
+          </Button>
+        </div>
       </div>
     </div>
   );
