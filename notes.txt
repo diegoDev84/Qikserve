@@ -1,6 +1,2 @@
 os botões de mais e menos nao estao ficando corretamente alinhados dependendo o tamanho da tela. 
 Talvez uma div centralizada funcione
-
-precisa ainda exibir qts itens tem de cada na cesta (no menu)
-
-botão "menos" na basket (remove item)

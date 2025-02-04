@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useRestaurantContext } from "@/app/layout";
 import { useDispatch } from "react-redux";
-import { addItem } from "@/store/slices/basketSlice";
+import { addItem, removeItem } from "@/store/slices/basketSlice";
 import CheckoutButton from "./CheckoutButton";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { CgClose } from "react-icons/cg";
@@ -36,6 +36,25 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
 
     // Dispara a action addItem
     dispatch(addItem(newItem));
+  };
+
+  const removeItemFromBasket = (id: number) => {
+    const name = basketItems.find((item) => item.id === id)?.name;
+    const quantity = basketItems.find((item) => item.id === id)?.quantity;
+    const totalItemPrice = basketItems.find((item) => item.id === id)?.price;
+    const individualPrice = Number(totalItemPrice) / Number(quantity);
+    const detail = basketItems.find((item) => item.id === id)?.detail;
+
+    const newItem = {
+      id: id,
+      name: String(name),
+      quantity: 1,
+      detail: detail ?? "",
+      price: Number(individualPrice),
+    };
+
+    // Dispara a action removeItem
+    dispatch(removeItem(newItem));
   };
 
   const calculaTotal = () => {
@@ -97,7 +116,7 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                         padding: "0px",
                         paddingBottom: "5px",
                       }}
-                      // onClick={() => setNumberOfItems((prev) => Math.max(prev - 1, 1))}
+                      onClick={() => removeItemFromBasket(item.id)}
                     >
                       -
                     </button>

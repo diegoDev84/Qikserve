@@ -33,8 +33,19 @@ export const basketSlice = createSlice({
         state.items.push(action.payload);
       }
     },
-    removeItem: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter((item) => item.id !== action.payload);
+    removeItem: (state, action: PayloadAction<BasketItem>) => {
+      const existingItem = state.items.find(
+        (item) => item.id?.toString() === action.payload.id?.toString()
+      );
+      if (existingItem) {
+        existingItem.quantity -= action.payload.quantity;
+        existingItem.price -= action.payload.price;
+        if (existingItem.quantity <= 0) {
+          state.items = state.items.filter(
+            (item) => item.id !== action.payload.id
+          );
+        }
+      }
     },
     clearBasket: (state) => {
       state.items = [];
