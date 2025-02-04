@@ -37,9 +37,16 @@ export function useFetchRestaurant() {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const isDev =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
 
   useEffect(() => {
-    fetch("/api/restaurant")
+    fetch(
+      isDev
+        ? "/api/restaurant"
+        : "https://cdn-dev.preoday.com/challenge/venue/9"
+    )
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
