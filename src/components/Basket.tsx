@@ -96,7 +96,7 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
           className="position-absolute"
           style={{
             right: "16px",
-            top: "18px",
+            top: "50px",
             display: isMobile ? "block" : "none",
           }}
           onClick={onClose}
