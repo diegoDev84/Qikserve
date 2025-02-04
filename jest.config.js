@@ -6,7 +6,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+    "^.+\\.(js|jsx|ts|tsx)$": "@swc/jest",
   },
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1", // Mapeia `@/` para `src/`
