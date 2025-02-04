@@ -20,6 +20,19 @@ export interface Restaurant {
   locale: string;
 }
 
+/**
+ * A custom React hook that fetches restaurant data from the "/api/restaurant" endpoint.
+ *
+ * This hook manages the network request process by maintaining loading and error state.
+ * It returns an object with the following properties:
+ *
+ * - restaurant: The fetched restaurant data, or null if the data is not yet available or if an error occurred.
+ * - loading: A boolean indicating whether the fetch request is currently in progress.
+ * - error: A string containing any error message that occurred during the fetch, or null if no error occurred.
+ *
+ * @returns An object containing the restaurant data, loading status, and error message.
+ */
+
 export function useFetchRestaurant() {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);

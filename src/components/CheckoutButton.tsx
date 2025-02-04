@@ -5,6 +5,18 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Button from "./Button";
 
+/**
+ * Renders the checkout button component.
+ *
+ * This component accesses the current restaurant details from the restaurant context.
+ * If no restaurant data is available, it renders a fallback message.
+ *
+ * When the button is clicked, it executes the checkout process by displaying an alert
+ * and dispatching an action to clear the basket.
+ *
+ * @returns {JSX.Element} The rendered checkout button or a fallback message if restaurant data is missing.
+ */
+
 export default function CheckoutButton() {
   const { restaurant } = useRestaurantContext();
   const dispatch = useDispatch();

@@ -43,6 +43,18 @@ export interface Menu {
   sections: MenuSection[];
 }
 
+/**
+ * Fetches menu data from the API.
+ *
+ * This hook performs a GET request to the "/api/menu" endpoint to retrieve the menu data.
+ * It manages the loading, data, and error states associated with the fetch operation.
+ *
+ * @returns An object containing:
+ *  - menu: The fetched menu data or null if not available.
+ *  - loading: A boolean flag indicating whether the fetch operation is in progress.
+ *  - error: A string describing any error encountered during the fetch process, or null if no error occurred.
+ */
+
 export function useFetchMenu() {
   const [menu, setMenu] = useState<Menu | null>(null);
   const [loading, setLoading] = useState(true);

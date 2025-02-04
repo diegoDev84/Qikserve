@@ -18,6 +18,21 @@ interface ModalProps {
   item: IMenuItem | null;
 }
 
+/**
+ * Displays a modal that presents detailed information about a specific item, including its modifiers,
+ * quantity selection, and pricing. It allows users to select optional modifiers, adjust the quantity,
+ * and add the item to the order.
+ *
+ * @param props - The modal properties.
+ * @param props.isOpen - A boolean indicating whether the modal is visible.
+ * @param props.onClose - A callback function to close the modal.
+ * @param props.item - The item object containing details such as name, price, images, description,
+ *                     and modifiers to be displayed and processed.
+ *
+ * @returns A JSX element representing the item details modal if the modal is open and the item data
+ *          is provided. Returns null if the modal is not open or the item data is absent.
+ */
+
 export default function ItemDetailsModal({
   isOpen,
   onClose,

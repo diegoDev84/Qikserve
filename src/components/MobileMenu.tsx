@@ -6,6 +6,20 @@ import { usePathname } from "next/navigation";
 import { useRestaurantContext } from "@/app/layout";
 import { BiMenu } from "react-icons/bi";
 
+/**
+ * Renders a mobile navigation menu component.
+ *
+ * @remarks
+ * This component displays a header with the current route's title and a toggleable mobile menu. It retrieves restaurant data using the useRestaurantContext hook.
+ * The header and menu background colors are set based on the restaurant's web settings. Depending on the restaurant data state, it shows a loading indicator, error message, or no data message.
+ *
+ * @returns A JSX element that includes the mobile menu and navigation header with dynamic route information.
+ *
+ * @example
+ * // Render the MobileMenu component
+ * return <MobileMenu />;
+ */
+
 export default function MobileMenu() {
   const { restaurant, loading, error } = useRestaurantContext();
   const pathname = usePathname(); // Obtém a rota atual

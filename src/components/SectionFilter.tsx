@@ -7,6 +7,31 @@ interface SectionFilterProps {
   sections: MenuSection[];
 }
 
+/**
+ * Renders a set of sections for filtering with a horizontal scrollable list.
+ *
+ * The component displays each section as a clickable item with an image and title. When a section is clicked,
+ * its selection is toggled. If the section is currently selected, it is deselected. The visual state is communicated
+ * by applying a border to the selected section's container and image.
+ *
+ * If the restaurant context is not available, the component renders a fallback header indicating that there is no data.
+ *
+ * @param onSectionSelect - A callback function invoked when a section is selected or deselected.
+ * @param sections - An array of section objects, where each section includes a name and an array of images.
+ *
+ * @returns A JSX element representing the section filter.
+ *
+ * @example
+ * // Usage example:
+ * <SectionFilter
+ *   onSectionSelect={(selected) => console.log("Selected section:", selected)}
+ *   sections={[
+ *     { name: "Burgers", images: [{ image: "/path/to/burger.jpg" }] },
+ *     { name: "Pizza", images: [{ image: "/path/to/pizza.jpg" }] }
+ *   ]}
+ * />
+ */
+
 export default function SectionFilter({
   onSectionSelect,
   sections,

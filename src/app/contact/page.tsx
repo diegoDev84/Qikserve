@@ -5,6 +5,25 @@ import { useRestaurantContext } from "../layout";
 import { BiMailSend } from "react-icons/bi";
 import { BsWhatsapp } from "react-icons/bs";
 
+/**
+ * ContactPage component renders the contact section of the application.
+ *
+ * @component
+ * @example
+ * return (
+ *   <ContactPage />
+ * )
+ *
+ * @remarks
+ * This component uses the useRestaurantContext hook to retrieve restaurant data
+ * and its associated webSettings. If the restaurant data is not available, it renders
+ * a "No data" message. When data is available, it displays contact information for email
+ * and WhatsApp, utilizing icons (e.g., BiMailSend, BsWhatsapp) styled according to the
+ * primaryColour defined in webSettings.
+ *
+ * @returns JSX.Element - A React element containing the styled contact section.
+ */
+
 export default function ContactPage() {
   const { restaurant } = useRestaurantContext();
 

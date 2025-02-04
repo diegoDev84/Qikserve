@@ -8,6 +8,19 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
+/**
+ * A SearchBar component that provides an input field for searching menu items.
+ *
+ * This component maintains an internal state to track the user's query.
+ * It calls the provided onSearch callback every time the user updates the input,
+ * enabling the parent component to update its state accordingly.
+ *
+ * @param {Object} props - The properties for the SearchBar.
+ * @param {function(string): void} props.onSearch - Callback function to be invoked with the updated search string.
+ *
+ * @returns {JSX.Element} The rendered SearchBar component.
+ */
+
 export default function SearchBar({ onSearch }: SearchBarProps) {
   const [query, setQuery] = useState("");
 

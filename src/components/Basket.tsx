@@ -11,6 +11,24 @@ import { CgClose } from "react-icons/cg";
 import ButtonCircle from "./ButtonCircle";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
+/**
+ * Renders the shopping basket UI with a list of items, allowing users to modify item quantities.
+ *
+ * @param onClose - Optional callback function invoked when the basket should be closed, e.g., on mobile devices.
+ *
+ * @remarks
+ * The Basket component retrieves the list of items from the Redux store and uses helper functions to
+ * add or remove items from the basket. It calculates the total price of the basket using the items' individual prices,
+ * and adjusts its layout based on the device type determined by a custom hook. The component also uses context
+ * to access restaurant settings such as currency, locale, and color configurations.
+ *
+ * @example
+ * // Basic usage of the Basket component:
+ * <Basket onClose={() => console.log('Basket closed')} />
+ *
+ * @returns A JSX.Element representing the basket UI with header, list of items, and total price display.
+ */
+
 export default function Basket({ onClose }: { onClose?: () => void }) {
   const basketItems = useSelector((state: RootState) => state.basket.items);
   const dispatch = useDispatch();

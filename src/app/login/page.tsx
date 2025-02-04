@@ -6,6 +6,16 @@ import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { useRestaurantContext } from "../layout";
 import Button from "@/components/Button";
 
+/**
+ * Renders the LoginPage component which provides a login interface.
+ *
+ * This component displays inputs for email and password, and includes a toggle to show
+ * or hide the password field. It uses the restaurant context to obtain web settings, such as primary colours,
+ * and handles login validation by marking a login attempt as invalid.
+ *
+ * @returns {JSX.Element} The rendered LoginPage component.
+ */
+
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [invalidLogin, setInvalidLogin] = useState(false);

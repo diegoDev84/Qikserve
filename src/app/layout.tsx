@@ -30,6 +30,20 @@ async function fetchRestaurantData(): Promise<Restaurant> {
   return res.json();
 }
 
+/**
+ * RootLayout component which initializes the application layout and fetches restaurant data.
+ *
+ * This component performs the following:
+ * - Fetches restaurant data on component mount and manages the loading and error states.
+ * - Provides the restaurant data, loading, and error states via the RestaurantContext to its children.
+ * - Conditionally renders either a mobile or desktop menu based on the device type.
+ * - Wraps the application in HTML structure with appropriate meta tags and headers.
+ *
+ * @param children - The child React nodes to render within the main content area.
+ *
+ * @returns A React element representing the layout of the application with restaurant data context.
+ */
+
 export default function RootLayout({
   children,
 }: {

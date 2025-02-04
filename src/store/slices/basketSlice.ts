@@ -17,6 +17,35 @@ const initialState: BasketState = {
   items: [],
 };
 
+/**
+ * Represents the basket slice which manages the state of a shopping basket.
+ *
+ * @remarks
+ * This slice contains actions to add, remove, and clear items in the basket.
+ *
+ * @example
+ * // Adding an item:
+ * dispatch(addItem({ id: '123', quantity: 2, price: 20 }));
+ *
+ * @example
+ * // Removing an item:
+ * dispatch(removeItem({ id: '123', quantity: 1, price: 10 }));
+ *
+ * @example
+ * // Clearing the basket:
+ * dispatch(clearBasket());
+ *
+ * @remarks
+ * The addItem reducer will ignore any action with a non-positive quantity. If the item
+ * already exists in the basket, its quantity and price are incremented.
+ *
+ * @remarks
+ * The removeItem reducer decreases the quantity and price of the item; if the quantity is
+ * less than or equal to zero after the update, the item is removed entirely from the basket.
+ *
+ * @public
+ */
+
 export const basketSlice = createSlice({
   name: "basket",
   initialState,
