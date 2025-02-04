@@ -224,9 +224,22 @@ const HomePage: React.FC = () => {
               </OverlayTrigger>
             </div>
           </div>
+          <div style={{ height: "50px" }}></div>
+
           {basketItems.length > 0 && (
-            <div className="mt-4 border-top" style={{ margin: "-33px" }}>
-              <div className="px-4 pb-4 mt-2">
+            <div
+              style={{
+                margin: "-33px",
+                position: isMobile ? "fixed" : "sticky",
+                background: "RGB(255, 255, 255, 0.7)",
+                //efeito desfocado
+                backdropFilter: "blur(10px)",
+                height: "100px",
+                bottom: 0,
+                width: "100vw",
+              }}
+            >
+              <div className="px-4 pb-4">
                 <Button
                   primarycolor={webSettings.primaryColour}
                   hovercolor={webSettings.primaryColourHover}
