@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface BotaoProps {
-  primaryColor: string;
-  hoverColor: string;
+  primarycolor: string;
+  hovercolor: string;
 }
 
 /**
@@ -18,7 +18,7 @@ interface BotaoProps {
  * - The component has a width of 100%, a fixed height, no border, a rounded appearance, and transition effects.
  *
  * @example
- * <Button primaryColor="#007BFF" hoverColor="#0056b3">
+ * <Button primarycolor="#007BFF" hovercolor="#0056b3">
  *   Click Me!
  * </Button>
  *
@@ -26,7 +26,7 @@ interface BotaoProps {
  */
 
 const Button = styled.button<BotaoProps>`
-  background-color: ${(props) => props.primaryColor};
+  background-color: ${(props) => props.primarycolor};
   color: #fff;
   width: 100%;
   height: 48px;
@@ -37,7 +37,7 @@ const Button = styled.button<BotaoProps>`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${(props) => props.hoverColor};
+    background-color: ${(props) => props.hovercolor};
   }
 `;
 

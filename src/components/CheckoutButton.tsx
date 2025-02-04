@@ -31,8 +31,8 @@ export default function CheckoutButton() {
 
   return (
     <Button
-      primaryColor={webSettings.primaryColour}
-      hoverColor={webSettings.primaryColourHover}
+      primarycolor={webSettings.primaryColour}
+      hovercolor={webSettings.primaryColourHover}
       onClick={() => onCheckOut()}
     >
       Checkout now

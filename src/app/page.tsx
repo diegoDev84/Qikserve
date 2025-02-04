@@ -227,8 +227,8 @@ const HomePage: React.FC = () => {
             <div className="mt-4 border-top" style={{ margin: "-33px" }}>
               <div className="px-4 pb-4 mt-2">
                 <Button
-                  primaryColor={webSettings.primaryColour}
-                  hoverColor={webSettings.primaryColourHover}
+                  primarycolor={webSettings.primaryColour}
+                  hovercolor={webSettings.primaryColourHover}
                   onClick={() => setOpenBasket(true)}
                 >
                   Your Basket • {basketItems.length} item

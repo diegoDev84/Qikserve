@@ -86,8 +86,8 @@ export default function LoginPage() {
       <div className="row justify-content-center">
         <div className="col-lg-4 col-md-6 col-12 mt-3">
           <Button
-            primaryColor={webSettings.primaryColour}
-            hoverColor={webSettings.primaryColourHover}
+            primarycolor={webSettings.primaryColour}
+            hovercolor={webSettings.primaryColourHover}
             onClick={() => setInvalidLogin(true)}
           >
             <div className="d-flex align-items-center justify-content-center">

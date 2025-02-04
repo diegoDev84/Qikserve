@@ -275,8 +275,8 @@ export default function ItemDetailsModal({
           <ButtonCircle
             width="32px"
             height="32px"
-            bgColor="#DADADA"
-            hoverColor="#DADADA"
+            bgcolor="#DADADA"
+            hovercolor="#DADADA"
             onClick={() => setNumberOfItems((prev) => Math.max(prev - 1, 1))}
           >
             <FaMinus size={18} color="#fff" />
@@ -287,8 +287,8 @@ export default function ItemDetailsModal({
           <ButtonCircle
             width="32px"
             height="32px"
-            bgColor={webSettings.primaryColour}
-            hoverColor={webSettings.primaryColourHover}
+            bgcolor={webSettings.primaryColour}
+            hovercolor={webSettings.primaryColourHover}
             onClick={() => setNumberOfItems((prev) => prev + 1)}
           >
             <FaPlus size={18} color="#fff" />
@@ -296,8 +296,8 @@ export default function ItemDetailsModal({
         </div>
         <div className="mt-2">
           <Button
-            primaryColor={webSettings.primaryColour}
-            hoverColor={webSettings.primaryColourHover}
+            primarycolor={webSettings.primaryColour}
+            hovercolor={webSettings.primaryColourHover}
             onClick={handleAddToOrder}
           >
             Add to Order •{" "}

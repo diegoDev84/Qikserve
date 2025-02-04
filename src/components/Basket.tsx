@@ -145,8 +145,8 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                     <ButtonCircle
                       width="20px"
                       height="20px"
-                      bgColor={webSettings.primaryColour}
-                      hoverColor={webSettings.primaryColourHover}
+                      bgcolor={webSettings.primaryColour}
+                      hovercolor={webSettings.primaryColourHover}
                       onClick={() => removeItemFromBasket(item.id)}
                     >
                       <FaMinus size={12} color="#fff" />
@@ -155,8 +155,8 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                     <ButtonCircle
                       width="20px"
                       height="20px"
-                      bgColor={webSettings.primaryColour}
-                      hoverColor={webSettings.primaryColourHover}
+                      bgcolor={webSettings.primaryColour}
+                      hovercolor={webSettings.primaryColourHover}
                       onClick={() => addItemToBasket(item.id)}
                     >
                       <FaPlus size={12} color="#fff" />
