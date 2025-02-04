@@ -92,8 +92,7 @@ const HomePage: React.FC = () => {
 
   const { webSettings } = restaurant;
 
-  console.log(menu);
-  console.log(restaurant);
+  console.log(isMobile);
 
   return isMobile && openItemDetails ? (
     <ItemDetailsModal
