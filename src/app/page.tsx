@@ -64,8 +64,6 @@ const HomePage: React.FC = () => {
 
   const { webSettings } = restaurant;
 
-  console.log(webSettings);
-
   if (loading)
     return (
       <div
