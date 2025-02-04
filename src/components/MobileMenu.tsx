@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BiMenu } from "react-icons/bi";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 
 /**
  * Renders a mobile navigation menu component.
  *
  * @remarks
- * This component displays a header with the current route's title and a toggleable mobile menu. It retrieves restaurant data using the useFetchRestaurant hook.
+ * This component displays a header with the current route's title and a toggleable mobile menu. It retrieves restaurant data using the useRestaurantContext.
  * The header and menu background colors are set based on the restaurant's web settings. Depending on the restaurant data state, it shows a loading indicator, error message, or no data message.
  *
  * @returns A JSX element that includes the mobile menu and navigation header with dynamic route information.
@@ -21,7 +21,7 @@ import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
  */
 
 export default function MobileMenu() {
-  const { restaurant, loading, error } = useFetchRestaurant();
+  const { restaurant, loading, error } = useRestaurantContext();
   const pathname = usePathname(); // Obtém a rota atual
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 

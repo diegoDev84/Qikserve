@@ -1,7 +1,7 @@
 // app/page.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { IMenuItem, useFetchMenu } from "@/hooks/useFetchMenu";
+import { IMenuItem } from "@/hooks/useFetchMenu";
 import MenuItemComponent from "../components/MenuItem";
 import SearchBar from "@/components/SearchBar";
 import { OverlayTrigger, Spinner } from "react-bootstrap";
@@ -14,7 +14,8 @@ import Basket from "@/components/Basket";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import Button from "@/components/Button";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "../context/RestaurantProvider";
+import { useMenuContext } from "@/context/MenuProvider";
 
 /**
  * HomePage component that displays the restaurant menu and basket.
@@ -35,8 +36,8 @@ import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
  */
 
 const HomePage: React.FC = () => {
-  const { menu, loading, error } = useFetchMenu();
-  const { restaurant } = useFetchRestaurant();
+  const { menu, loading, error } = useMenuContext();
+  const { restaurant } = useRestaurantContext();
   const isMobile = useDeviceType();
   const basketItems = useSelector((state: RootState) => state.basket.items);
   const [openBasket, setOpenBasket] = useState<boolean>(false);
@@ -45,6 +46,9 @@ const HomePage: React.FC = () => {
   const [openedSections, setOpenedSections] = useState<string[]>(
     menu?.sections?.map((section) => section.name) ?? []
   );
+
+  console.log(menu);
+  console.log(restaurant);
 
   useEffect(() => {
     if (menu) {

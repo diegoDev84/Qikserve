@@ -3,7 +3,7 @@ import { clearBasket } from "@/store/slices/basketSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
 import Button from "./Button";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 
 /**
  * Renders the checkout button component.
@@ -18,7 +18,7 @@ import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
  */
 
 export default function CheckoutButton() {
-  const { restaurant } = useFetchRestaurant();
+  const { restaurant } = useRestaurantContext();
   const dispatch = useDispatch();
   if (!restaurant) return <div>No data</div>;
 

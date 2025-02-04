@@ -3,8 +3,9 @@
 
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
-import { IMenuItem, useFetchMenu } from "../hooks/useFetchMenu";
+import { IMenuItem } from "../hooks/useFetchMenu";
 import ItemDetailsModal from "./ItemDetailsModal";
+import { useMenuContext } from "@/context/MenuProvider";
 
 /**
  * Renders the menu list.
@@ -26,7 +27,7 @@ import ItemDetailsModal from "./ItemDetailsModal";
  */
 
 export default function MenuList() {
-  const { menu, loading, error } = useFetchMenu();
+  const { menu, loading, error } = useMenuContext();
   const [selectedItem, setSelectedItem] = useState<IMenuItem | null>(null);
 
   if (loading) return <p>Carregando menu...</p>;

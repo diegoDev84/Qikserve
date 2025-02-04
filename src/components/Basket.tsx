@@ -9,7 +9,7 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { CgClose } from "react-icons/cg";
 import ButtonCircle from "./ButtonCircle";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 
 /**
  * Renders the shopping basket UI with a list of items, allowing users to modify item quantities.
@@ -34,7 +34,7 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
   const dispatch = useDispatch();
   const isMobile = useDeviceType();
 
-  const { restaurant } = useFetchRestaurant();
+  const { restaurant } = useRestaurantContext();
   if (!restaurant) return <div>No data</div>;
 
   const { webSettings } = restaurant;

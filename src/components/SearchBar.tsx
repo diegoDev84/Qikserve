@@ -1,4 +1,4 @@
-"use client"; // Adicione esta linha no topo do arquivo
+"use client";
 
 import React, { useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";

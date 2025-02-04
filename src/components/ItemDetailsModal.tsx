@@ -10,7 +10,7 @@ import Button from "./Button";
 import ButtonCircle from "./ButtonCircle";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 
 interface ModalProps {
   isOpen: boolean;
@@ -65,7 +65,7 @@ export default function ItemDetailsModal({
     }
   }, [item]);
 
-  const { restaurant } = useFetchRestaurant();
+  const { restaurant } = useRestaurantContext();
   if (!restaurant) return <div>No data</div>;
 
   const { webSettings } = restaurant;
@@ -95,7 +95,6 @@ export default function ItemDetailsModal({
   };
 
   const handleAddToOrder = () => {
-    //verificar se é necessário adicionar o modifierSelected no id
     if (
       item.modifiers &&
       item.modifiers.length > 0 &&

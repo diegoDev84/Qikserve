@@ -1,9 +1,9 @@
 //src/app/contact/page.tsx
 "use client";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 import React from "react";
 import { BiMailSend } from "react-icons/bi";
 import { BsWhatsapp } from "react-icons/bs";
+import { useRestaurantContext } from "../../context/RestaurantProvider";
 /**
  * ContactPage component renders the contact section of the application.
  *
@@ -14,7 +14,7 @@ import { BsWhatsapp } from "react-icons/bs";
  * )
  *
  * @remarks
- * This component uses the useFetchRestaurant hook to retrieve restaurant data
+ * This component uses the useRestaurantContext to retrieve restaurant data
  * and its associated webSettings. If the restaurant data is not available, it renders
  * a "No data" message. When data is available, it displays contact information for email
  * and WhatsApp, utilizing icons (e.g., BiMailSend, BsWhatsapp) styled according to the
@@ -24,7 +24,7 @@ import { BsWhatsapp } from "react-icons/bs";
  */
 
 export default function ContactPage() {
-  const { restaurant } = useFetchRestaurant();
+  const { restaurant } = useRestaurantContext();
 
   if (!restaurant) return <div>No data</div>;
 

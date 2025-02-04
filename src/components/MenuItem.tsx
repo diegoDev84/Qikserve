@@ -1,6 +1,6 @@
 // src/components/MenuItem.tsx
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 import { IMenuItem } from "@/hooks/useFetchMenu";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
 import { RootState } from "@/store";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -28,7 +28,7 @@ interface MenuItemProps {
  */
 
 export default function MenuItem({ item, onClick }: MenuItemProps) {
-  const { restaurant } = useFetchRestaurant();
+  const { restaurant } = useRestaurantContext();
   const basketItems = useSelector((state: RootState) => state.basket.items);
 
   if (!restaurant) return <div>No data</div>;

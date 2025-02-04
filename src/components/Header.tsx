@@ -1,10 +1,10 @@
 // src/components/Header.tsx
 "use client";
-import { useFetchRestaurant } from "@/hooks/useFetchRestaurant";
+import { useRestaurantContext } from "@/context/RestaurantProvider";
 import React from "react";
 
 const Header: React.FC = () => {
-  const { restaurant, loading, error } = useFetchRestaurant();
+  const { restaurant, loading, error } = useRestaurantContext();
 
   if (loading) return <header>Loading...</header>;
   if (error) return <header>Error: {error}</header>;
