@@ -162,16 +162,6 @@ header img {
   color: #121212;
 }
 
-.btn-item-basket {
-  width: 20px !important;
-  height: 20px !important;
-  font-size: 1.4rem !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: white !important;
-}
-
 .item-description {
   font-weight: 300;
   overflow: hidden;

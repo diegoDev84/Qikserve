@@ -8,6 +8,8 @@ import { addItem, removeItem } from "@/store/slices/basketSlice";
 import CheckoutButton from "./CheckoutButton";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { CgClose } from "react-icons/cg";
+import ButtonCircle from "./ButtonCircle";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 export default function Basket({ onClose }: { onClose?: () => void }) {
   const basketItems = useSelector((state: RootState) => state.basket.items);
@@ -122,28 +124,25 @@ export default function Basket({ onClose }: { onClose?: () => void }) {
                     className="fw-700 d-flex align-items-center h-100"
                     style={{ padding: "8px", gap: "16px" }}
                   >
-                    <button
-                      className="btn rounded-circle btn-item-basket fs-2"
-                      style={{
-                        backgroundColor: webSettings.primaryColour,
-                        padding: "0px",
-                        paddingBottom: "5px",
-                      }}
+                    <ButtonCircle
+                      width="20px"
+                      height="20px"
+                      bgColor={webSettings.primaryColour}
+                      hoverColor={webSettings.primaryColourHover}
                       onClick={() => removeItemFromBasket(item.id)}
                     >
-                      -
-                    </button>
+                      <FaMinus size={12} color="#fff" />
+                    </ButtonCircle>
                     {item.quantity}
-                    <button
-                      className="btn rounded-circle btn-item-basket"
-                      style={{
-                        backgroundColor: webSettings.primaryColour,
-                        padding: "0px",
-                      }}
+                    <ButtonCircle
+                      width="20px"
+                      height="20px"
+                      bgColor={webSettings.primaryColour}
+                      hoverColor={webSettings.primaryColourHover}
                       onClick={() => addItemToBasket(item.id)}
                     >
-                      +
-                    </button>
+                      <FaPlus size={12} color="#fff" />
+                    </ButtonCircle>
                   </div>
                 </div>
               ))}

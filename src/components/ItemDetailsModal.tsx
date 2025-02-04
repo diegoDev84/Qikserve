@@ -8,6 +8,9 @@ import { CgClose } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/store/slices/basketSlice";
 import Button from "./Button";
+import ButtonCircle from "./ButtonCircle";
+import { FaMinus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
 
 interface ModalProps {
   isOpen: boolean;
@@ -254,45 +257,28 @@ export default function ItemDetailsModal({
           className="d-flex justify-content-center align-items-center px-4"
           style={{ gap: "30px" }} // define explicitamente a altura para essa linha
         >
-          <button
-            className="btn rounded-circle"
-            style={{
-              backgroundColor: "#DADADA",
-              border: "2px solid #DADADA",
-              width: "32px",
-              height: "32px",
-              fontSize: "3rem",
-              display: "flex",
-              alignItems: "center",
-              paddingBottom: "16px",
-              justifyContent: "center",
-            }}
-            disabled={numberOfItems === 1}
+          <ButtonCircle
+            width="32px"
+            height="32px"
+            bgColor="#DADADA"
+            hoverColor="#DADADA"
             onClick={() => setNumberOfItems((prev) => Math.max(prev - 1, 1))}
           >
-            -
-          </button>
+            <FaMinus size={18} color="#fff" />
+          </ButtonCircle>
           <div style={{ fontSize: "24px", fontWeight: "600" }}>
             {numberOfItems}
           </div>
-          <button
-            className="btn rounded-circle text-white"
-            style={{
-              backgroundColor: webSettings.primaryColour,
-              width: "32px",
-              height: "32px",
-              fontSize: "2rem",
-              paddingBottom: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+          <ButtonCircle
+            width="32px"
+            height="32px"
+            bgColor={webSettings.primaryColour}
+            hoverColor={webSettings.primaryColourHover}
             onClick={() => setNumberOfItems((prev) => prev + 1)}
           >
-            +
-          </button>
+            <FaPlus size={18} color="#fff" />
+          </ButtonCircle>
         </div>
-
         <div className="mt-2">
           <Button
             primaryColor={webSettings.primaryColour}
