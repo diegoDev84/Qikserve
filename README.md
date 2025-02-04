@@ -74,7 +74,7 @@ Este projeto foi desenvolvido com foco em atender aos seguintes pontos:
 
 ## Demo ao Vivo
 
-_Em breve: URL para demonstração online_
+https://diegodev84.github.io/Qikserve
 
 ---
 
@@ -268,4 +268,3 @@ yarn test
 ---
 
 Obrigado por conferir este desafio! Caso tenha dúvidas ou sugestões, fique à vontade para entrar em contato.
-
