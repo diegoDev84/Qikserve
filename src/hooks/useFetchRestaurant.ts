@@ -35,7 +35,7 @@ export interface Restaurant {
 
 export function useFetchRestaurant() {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

@@ -17,8 +17,8 @@ import Button from "@/components/Button";
  */
 
 export default function LoginPage() {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [invalidLogin, setInvalidLogin] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+  const [invalidLogin, setInvalidLogin] = useState<boolean>(false);
   const { restaurant } = useRestaurantContext();
 
   if (!restaurant) return <div>No data</div>;

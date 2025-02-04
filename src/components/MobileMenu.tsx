@@ -23,7 +23,7 @@ import { BiMenu } from "react-icons/bi";
 export default function MobileMenu() {
   const { restaurant, loading, error } = useRestaurantContext();
   const pathname = usePathname(); // Obtém a rota atual
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   if (loading) return <header>Loading...</header>;
   if (error) return <header>Error: {error}</header>;

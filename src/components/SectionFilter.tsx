@@ -36,7 +36,7 @@ export default function SectionFilter({
   onSectionSelect,
   sections,
 }: SectionFilterProps) {
-  const [selectedSection, setSelectedSection] = useState("");
+  const [selectedSection, setSelectedSection] = useState<string>("");
 
   const handleSectionClick = (sectionName: string) => {
     const newSection = selectedSection === sectionName ? "" : sectionName; // Se já estiver selecionado, desmarca
