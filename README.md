@@ -1,10 +1,9 @@
-# Qikserve Restaurant Challenge
+# BURGUERS DELIVERY
 
-> Este projeto foi desenvolvido como parte do processo seletivo para **Front End Developer** na Qikserve.  
 > A aplicação foi construída em React (Next.js) com TypeScript, e tem como objetivo apresentar os dados de um restaurante e seu menu, permitindo a visualização dos itens e a montagem de um carrinho de compras.
 >
 > **Let's get started!**  
-> Conforme descrito, este desafio consiste em construir uma aplicação que consome dados reais (sem mocks) dos endpoints fornecidos, garantindo que o restaurante e seu menu sejam exibidos de forma customizada e de alta qualidade, alinhada com a identidade visual (white label) de cada cliente.
+> Este projeto consome dados reais (sem mocks) dos endpoints fornecidos, garantindo que o restaurante e seu menu sejam exibidos de forma customizada e de alta qualidade, alinhada com a identidade visual (white label) de cada cliente.
 
 ---
 
