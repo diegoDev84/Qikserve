@@ -224,7 +224,7 @@ const HomePage: React.FC = () => {
               </OverlayTrigger>
             </div>
           </div>
-          <div style={{ height: "50px" }}></div>
+          <div style={{ height: basketItems.length > 0 ? "50px" : "" }}></div>
 
           {basketItems.length > 0 && (
             <div
