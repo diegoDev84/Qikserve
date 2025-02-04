@@ -315,11 +315,28 @@ export default function ItemDetailsModal({
       {itemDetails}
     </Modal>
   ) : (
+    // Modal deve ficar no bottom
     <div
-      className="position-fixed"
-      style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+      style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        background: "RGBA(000, 000, 00, 0.6)",
+        height: "100vh",
+        width: "100vw",
+      }}
     >
-      {itemDetails}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          overflowY: "auto",
+          width: "100vw",
+        }}
+      >
+        {itemDetails}
+      </div>
     </div>
   );
 }

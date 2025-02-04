@@ -92,13 +92,7 @@ const HomePage: React.FC = () => {
 
   const { webSettings } = restaurant;
 
-  return isMobile && openItemDetails ? (
-    <ItemDetailsModal
-      item={selectedItem}
-      isOpen={openItemDetails}
-      onClose={() => setOpenItemDetails(false)}
-    />
-  ) : !openBasket ? (
+  return !openBasket ? (
     <div className="container">
       <div className="row">
         <SearchBar onSearch={setFilterQuery} />
