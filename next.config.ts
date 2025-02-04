@@ -1,11 +1,18 @@
 // next.config.ts
 import type { NextConfig } from "next";
 
-const menuApiUrl =
-  process.env.MENU_API_URL || "https://cdn-dev.preoday.com/challenge/menu";
-const restaurantApiUrl =
-  process.env.RESTAURANT_API_URL ||
-  "https://cdn-dev.preoday.com/challenge/venue/9";
+// Verifica se está em ambiente de desenvolvimento
+const isDev = process.env.NODE_ENV === "development";
+
+// Em desenvolvimento, você pode usar os rewrites para contornar CORS
+// Em produção, use as URLs absolutas diretamente
+const menuApiUrl = isDev
+  ? "http://localhost:3000/api/menu"
+  : "https://cdn-dev.preoday.com/challenge/menu";
+
+const restaurantApiUrl = isDev
+  ? "http://localhost:3000/api/restaurant"
+  : "https://cdn-dev.preoday.com/challenge/venue/9";
 
 const nextConfig: NextConfig = {
   async rewrites() {
